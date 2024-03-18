@@ -6,7 +6,7 @@ import { INestApplication } from '@nestjs/common';
  * @returns {INestApplication}
  */
 const setupApplication = (app: INestApplication): INestApplication => {
-    return app;
+  return app;
 };
 
 export { setupApplication };
