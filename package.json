@@ -19,8 +19,8 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "migrate:dev": "flyway -url=jdbc:postgresql://ec2-54-158-26-89.compute-1.amazonaws.com:5432/dbn9pt7tmklkh -user=lhrgparcipqcci -password=27d619686584051a95e4a3400a8bdcd41eaf39124431d8039a59284f98201120 -locations=filesystem:src/migrations/sql migrate",
-    "migrate:dev:clean": "flyway -url=jdbc:postgresql://ec2-54-158-26-89.compute-1.amazonaws.com:5432/dbn9pt7tmklkh -user=lhrgparcipqcci -password=27d619686584051a95e4a3400a8bdcd41eaf39124431d8039a59284f98201120 -locations=filesystem:src/migrations/sql clean"
+    "migrate:dev": "flyway -url=jdbc:postgresql://aws-0-ap-south-1.pooler.supabase.com:5432/postgres -user=postgres.syhycrynyhzwwzfosdra -password=QXeOIaiw6BYTV6Tm -locations=filesystem:src/migrations/sql migrate",
+    "migrate:dev:clean": "flyway -url=jdbc:postgresql://aws-0-ap-south-1.pooler.supabase.com:5432/postgres -user=postgres.syhycrynyhzwwzfosdra -password=QXeOIaiw6BYTV6Tm -locations=filesystem:src/migrations/sql clean -cleanDisabled=false"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",
