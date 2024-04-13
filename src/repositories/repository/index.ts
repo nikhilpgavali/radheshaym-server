@@ -1,2 +1,2 @@
-export * from './channel.repository';
 export * from './base.repository';
+export * from './user.details.repository';
