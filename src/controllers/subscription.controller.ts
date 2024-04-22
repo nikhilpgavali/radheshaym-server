@@ -66,4 +66,12 @@ export class SubscriptionDetailsController {
       subscriptionId,
     );
   }
+
+  @Get('user.getSubscriptionDetailsByUserId/:id')
+  @HttpCode(200)
+  async findSubscriptionDetailsByUserId(@Param('id') userId: string) {
+    return await this.subscriptionDetailsService.findSubscriptionDetailsByUserId(
+      [userId],
+    );
+  }
 }

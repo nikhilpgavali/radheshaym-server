@@ -19,4 +19,12 @@ export class SocietyDetailsService {
   async findSocietyDetails(societyId: string): Promise<SocietyDetails> {
     return await this.societyRepository.findSocietyDetails(societyId);
   }
+
+  /**
+   * Returns society information by userId
+   * @returns {Promise<SocietyDetails>}  returns society information
+   */
+  async findSocietyDetailsById(userId: string[]): Promise<SocietyDetails> {
+    return await this.societyRepository.findSocietyDetailsByUserId(userId);
+  }
 }

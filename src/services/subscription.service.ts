@@ -29,4 +29,16 @@ export class SubscriptionDetailsService {
       subscriptionId,
     );
   }
+
+  /**
+   * Returns subscription information by userId
+   * @returns {Promise<SubscriptionDetails>}  returns subscription information
+   */
+  async findSubscriptionDetailsByUserId(
+    userId: string[],
+  ): Promise<SubscriptionDetails> {
+    return await this.subscriptionRepository.findSubscriptionDetailsByUserId(
+      userId,
+    );
+  }
 }

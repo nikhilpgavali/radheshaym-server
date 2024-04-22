@@ -67,4 +67,10 @@ export class SocietyDetailsController {
   async findSubscriptionDetails(@Param('id') societyId: string) {
     return await this.societyDetailsService.findSocietyDetails(societyId);
   }
+
+  @Get('user.getSocietyDetailsByUserId/:id')
+  @HttpCode(200)
+  async findSubscriptionDetailsByUserId(@Param('id') userId: string) {
+    return await this.societyDetailsService.findSocietyDetailsById([userId]);
+  }
 }

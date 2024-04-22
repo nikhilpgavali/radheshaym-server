@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { EntityManager } from 'typeorm';
 import { BaseRepository } from './base.repository';
 import { UserDetails } from '../entity/user.details.entity';
@@ -31,5 +31,31 @@ export class SubscriptionDetailsRepository extends BaseRepository<SubscriptionDe
       relations: ['userDetails'],
       where,
     });
+  }
+
+  /**
+   * Return Subscription Information by userId
+   */
+  async findSubscriptionDetailsByUserId(
+    userId: string[],
+  ): Promise<SubscriptionDetails> {
+    const query = this.readEntityManager
+      .createQueryBuilder(SubscriptionDetails, 'subscriptionDetails')
+      .select('subscriptionDetails')
+      .addSelect('userDetails')
+      .leftJoin('subscriptionDetails.userDetails', 'userDetails')
+      .where('subscriptionDetails.deleted = :deleted', { deleted: false })
+      .andWhere('subscriptionDetails.userDetails = ANY(:userId)', {
+        userId: userId,
+      });
+
+    let res = await query.getOne();
+    if (res == null) {
+      throw new HttpException(
+        `Society not found for user ${userId}`,
+        HttpStatus.NOT_FOUND,
+      );
+    }
+    return res;
   }
 }
